@@ -1,20 +1,3 @@
-"""
-wordlength | bestletter
-         1 | 0
-         2 | 1
-         3 | 1
-         4 | 1
-         5 | 1
-         6 | 2
-         7 | 2
-         8 | 2
-         9 | 2
-        10 | 3
-        11 | 3
-        12 | 3
-        13 | 3
-       >13 | 4
-"""
 import os
 import time
 import sys
@@ -22,8 +5,11 @@ f = open("test.txt", 'r');
 for line in f:
     words = line.split()
     for word in words:
-        os.system('clear')
-        wpm = 250
+        try:
+            os.system('clear')
+        except:
+            os.system('cls')
+        wpm = int(sys.argv[1])
         print "-----|---------"
         if len(word) == 1:
             print "     " + word
@@ -37,13 +23,13 @@ for line in f:
             print " " + word
         print "-----|---------"
         if len(word) <= 5:
-            wpm *= 1.1
+            wpm *= 1.5
         if len(word) > 5:
-            wpm *= 0.9
+            wpm *= 0.5
         if "." in word:
-            wpm *= 1.2
+            wpm *= 1.8
         if "," in word:
-            wpm *= 1.1
+            wpm *= 1.5
         wpm = 60 / wpm
         time.sleep(wpm)
         
